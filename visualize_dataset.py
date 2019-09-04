@@ -9,7 +9,6 @@ import pandas as pd
 
 from lib.lanutils.helpers import get_indices
 
-
 parser = argparse.ArgumentParser()
 parser.add_argument("--dataset-dir", type=Path, required=True)
 parser.add_argument("--output-dir", type=Path, required=True)
@@ -58,13 +57,13 @@ def get_dataset_mean_std(ims):
 
 def main():
     indices = get_indices(args.dataset_dir, args.im_suffix, indices_path=args.indices)
-    # for ind in tqdm(indices):
-    #     vis_image(ind)
-    with multiprocessing.Pool(processes=args.num_processes) as pool:
-        # _ = list(tqdm(pool.imap_unordered(vis_image, indices), total=len(indices)))
-        ims = list(tqdm(pool.imap_unordered(read_im, indices), total=len(indices)))
+    for ind in tqdm(indices):
+        vis_image(ind)
+    # with multiprocessing.Pool(processes=args.num_processes) as pool:
+    #     _ = list(tqdm(pool.imap_unordered(vis_image, indices), total=len(indices)))
+    # ims = list(tqdm(pool.imap_unordered(read_im, indices), total=len(indices)))
 
-    get_dataset_mean_std(ims)
+    # get_dataset_mean_std(ims)
 
 
 if __name__ == "__main__":
