@@ -54,8 +54,8 @@ def similar_to_2019(density):
     blue_mean = get_density_mean(density[0])
     return (
         110 < red_mean < 210
-        and 40 < green_mean < 100
-        and blue_mean < 60
-        and 20 < red_mean - green_mean < 80
-        and 10 < green_mean - blue_mean < 50
+        and 30 < green_mean < 120
+        and blue_mean < 80
+        and 10 < red_mean - green_mean < 80
+        and 10 < green_mean - blue_mean < 60
     )
